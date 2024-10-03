@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ControleFuncionarios.Business\ControleFuncionarios.Business.csproj" />
+    <ProjectReference Include="..\ControleFuncionarios.Infra\ControleFuncionarios.Infra.csproj" />
+  </ItemGroup>
+
 </Project>
