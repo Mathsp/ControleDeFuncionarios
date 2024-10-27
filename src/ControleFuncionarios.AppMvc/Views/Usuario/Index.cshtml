@@ -1,0 +1,16 @@
+﻿@using ControleFuncionarios.Business.Models
+@model UsuarioViewModel
+@{
+   
+}
+<div class="text-center">
+    <h3 class="display-4">Usando componentes Blazor</h3>
+</div>
+<hr />a
+
+<div>
+    <component type="typeof(Usuario)" render-mode="ServerPrerendered" param-Usuario="Model" />
+</div>
+@section Scripts {
+    <script src="_framework/blazor.server.js"></script>
+}

@@ -7,8 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\UsuarioComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Radzen.Blazor" Version="5.3.5" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ControleFuncionarios.Business\ControleFuncionarios.Business.csproj" />
     <ProjectReference Include="..\ControleFuncionarios.Infra\ControleFuncionarios.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Components\UsuarioComponent.razor" />
   </ItemGroup>
 
 </Project>

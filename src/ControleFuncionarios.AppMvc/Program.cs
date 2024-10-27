@@ -1,16 +1,27 @@
+using ControleFuncionarios.Business.Models;
 using ControleFuncionarios.Infra.Data.Context;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+var connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var connection = builder.Configuration.GetConnectionString("DefaultConnection");
+// Configuração do Identity
+builder.Services.AddIdentity<Usuario, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+// Configuração do DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     options.UseSqlServer(connection);
 });
+
+// Adiciona o Blazor Server
+builder.Services.AddServerSideBlazor();
 
 var app = builder.Build();
 
@@ -18,7 +29,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -27,8 +37,13 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
+// Mapear Blazor Hub
+app.MapBlazorHub();
+
+// Mapear rotas do controlador
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");

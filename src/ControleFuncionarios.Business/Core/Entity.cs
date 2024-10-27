@@ -17,5 +17,6 @@ namespace ControleFuncionarios.Business.Core
         public DateTime DataInclusao { get; set; }
         public Guid UsuarioInclusao { get; set; }
         public Guid UsuarioAlteracao { get; set; }
+        public bool Excluido { get; set; }
     }
 }

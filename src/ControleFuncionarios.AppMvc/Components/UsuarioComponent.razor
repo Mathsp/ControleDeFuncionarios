@@ -1,0 +1,36 @@
+﻿@page "/usuario"
+
+<h3>Usuarios</h3>
+
+<h3>
+    Olá , @Usuario.Nome
+    <br />
+    <input type="button" class="btn btn-primary" @onclick="AlterarNome" value="Alterar Nome" />
+    <input type="button" class="btn btn-primary" @onclick="AlterarEmail" value="Alterar Email " />
+</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Usuario.Nome</td>
+            <td>@Usuario.Email </td>
+        </tr>
+    </tbody>
+</table>
+@code {
+    [Parameter]
+    public UsuarioViewModel Usuario { get; set; }
+    private void AlterarNome()
+    {
+        Usuario.Nome = "Novo nome";
+    }
+    private void AlterarEmail()
+    {
+        Usuario.Email = "Novo email";
+    }
+}
