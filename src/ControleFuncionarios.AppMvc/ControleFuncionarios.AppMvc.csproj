@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Setor.razor" />
     <Content Remove="Components\UsuarioComponent.razor" />
   </ItemGroup>
 
@@ -26,7 +27,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Components\UsuarioComponent.razor" />
+    <None Include="Components\Setor\SetorComponent.razor" />
+    <None Include="Components\Usuario\UsuarioComponent.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Components\Setor.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Components\Setor.razor" />
   </ItemGroup>
 
 </Project>

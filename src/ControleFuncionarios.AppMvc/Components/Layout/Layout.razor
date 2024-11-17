@@ -1,0 +1,32 @@
+﻿@inject IJSRuntime Js;
+
+<RadzenLayout>
+    <RadzenHeader>
+        <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" JustifyContent="JustifyContent.SpaceBetween" Gap="0" Style="height: 100%;">
+            <RadzenStack Orientation="Orientation.Horizontal" AlignItems="AlignItems.Center" Style="padding-left:1rem; height: 100%">
+                <RadzenText Style="color: var(--rz-header-color);">Controle de Funcionários </RadzenText>
+            </RadzenStack>
+        </RadzenStack>
+    </RadzenHeader>
+    <RadzenSidebar @bind-Expanded="@sidebarExpanded" Responsive="true">
+        <RadzenPanelMenu>
+            <RadzenPanelMenuItem Text="Home" Icon="home" />
+            <RadzenPanelMenuItem Text="Setores" Icon="account_box" />
+        </RadzenPanelMenu>
+    </RadzenSidebar>
+    <RadzenBody>
+        <div id="corpo-principal" class="rz-p-4">
+        </div>
+    </RadzenBody>
+</RadzenLayout>
+
+@code {
+
+    bool sidebarExpanded = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await Js.InvokeVoidAsync("insereBody");
+        await base.OnAfterRenderAsync(firstRender);
+    }
+}

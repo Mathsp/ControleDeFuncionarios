@@ -1,0 +1,27 @@
+﻿@page "/setor"
+@using ControleFuncionarios.AppMvc.Models
+@using ControleFuncionarios.Business.Models
+@using ControleFuncionarios.Infra.Data.Context
+@inject ApplicationDbContext dbContext
+
+<RadzenDataGrid Data="@setores" GridLines="@GridLines" AllowPaging="true" AllowSorting="true">
+    <Columns>
+        <RadzenDataGridColumn Property="Nome" Title="Nome" />
+        <RadzenDataGridColumn Property="DataInclusao" Title="Data Inclusao" />
+    </Columns>
+</RadzenDataGrid>
+
+@code {
+
+
+    Radzen.DataGridGridLines GridLines = Radzen.DataGridGridLines.Default;
+
+    IEnumerable<Setor> setores;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+         
+        setores = dbContext.Setores;
+    }
+}

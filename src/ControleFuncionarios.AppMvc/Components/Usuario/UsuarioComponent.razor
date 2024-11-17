@@ -1,9 +1,11 @@
 ﻿@page "/usuario"
+@using ControleFuncionarios.AppMvc.Models
+@using ControleFuncionarios.Business.Models
 
 <h3>Usuarios</h3>
 
 <h3>
-    Olá , @Usuario.Nome
+    Olá , @Usuario?.Nome
     <br />
     <input type="button" class="btn btn-primary" @onclick="AlterarNome" value="Alterar Nome" />
     <input type="button" class="btn btn-primary" @onclick="AlterarEmail" value="Alterar Email " />
@@ -17,14 +19,14 @@
     </thead>
     <tbody>
         <tr>
-            <td>@Usuario.Nome</td>
-            <td>@Usuario.Email </td>
+            <td>@Usuario?.Nome</td>
+            <td>@Usuario?.Email </td>
         </tr>
     </tbody>
 </table>
 @code {
     [Parameter]
-    public UsuarioViewModel Usuario { get; set; }
+    public Usuario Usuario { get; set; }
     private void AlterarNome()
     {
         Usuario.Nome = "Novo nome";

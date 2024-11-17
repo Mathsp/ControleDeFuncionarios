@@ -1,4 +1,5 @@
 ﻿using ControleFuncionarios.Business.Models;
+using ControleFuncionarios.Infra.Data.Mappings;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,14 @@ namespace ControleFuncionarios.Infra.Data.Context
 
         }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Setor> Setores { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new SetorConfig());
+
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 }
