@@ -3,14 +3,8 @@ using ControleFuncionarios.Infra.Data.Context;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
-
 using Radzen;
-
-using Microsoft.EntityFrameworkCore;
-
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
-
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
 
@@ -38,6 +32,7 @@ builder.Services.AddServerSideBlazor().AddHubOptions(options =>
     options.MaximumReceiveMessageSize = 10485760;
 });
 builder.Services.AddHttpClient();
+builder.Services.AddRadzenComponents();
 
 
 var app = builder.Build();
